@@ -45,5 +45,117 @@
   - `dao`     此模块存放着数据交互的具体实现,供service调用
   - `service` 此模块存放业务代码实现,供API层调用
   - `webapi`  此模块也可以不出现在项目中,为了写demo故将webapi层放进来
+
+###5.`model`层实体类编写
+
+  - 建立包名 `com.luyh.projectv1.model`
+  - 建实体类 `Member.java` 具体代码请clone我的git,git地址在最下方
+
+###6.`dao`层数据库操作层
+  - 建立com.luyh.projectv1.dao.config,该包内只有2个让spring boot自动加载配置的配置java类
+  - 建立MemberMapper.java 具体内容看代码
+  - 在resources/mybatis 下建立MemberMapper.xml
+  - 建立IMember.java
+  - 建立Member.java 实现Imember接口
+  - 建立resources/application.properties文件用于配置数据库连接
+
+###7. `service` 编写业务逻辑
+  - 建立 `com.luyh.projectv1.service` 包
+  - 建立IMemberService.java接口
+  - 建立MemberService.java实现类
+  - MemberService.java 类中自动注入DaoMember 并调用其方法获取数据
+
+###8. `webapi` 编写webapi获取json数据
+ - 建立Application.java 启动应用
+ - 建立 `com.luyh.projectv1.webapi.controller.MemberController.java` 写个rest风格Controller
+ - 启动
+ 
+###9.sql文件  请自行导入mysql数据 sql文件
+****
+
+**[这里是项目地址,点击下载](https://github.com/luyunhua/spring-boot-base,"项目地址")**
+
+  
+  
+  
+  
+###附录1
+```
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.luyh.projectv1</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.3.3.RELEASE</version>
+    </parent>
+    <modules>
+
+        <module>model</module>
+        <module>dao</module>
+        <module>service</module>
+        <module>webapi</module>
+    </modules>
+
+    <!--申明依赖关系-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.2.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--设置maven仓库-->
+
+    <repositories>
+        <repository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+</project>
+```
     
            
