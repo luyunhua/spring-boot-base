@@ -73,7 +73,7 @@
 ###9.sql文件  请自行导入mysql数据 sql文件
 ****
 
-**[这里是项目地址,点击下载](https://github.com/luyunhua/spring-boot-base,"项目地址")**
+**[这里是项目地址,点击下载](https://github.com/luyunhua/spring-boot-base)**
 
   
   
