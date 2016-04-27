@@ -16,6 +16,9 @@
     <modules>
 
         <module>model</module>
+        <module>dao</module>
+        <module>service</module>
+        <module>webapi</module>
     </modules>
 
     <!--申明依赖关系-->
